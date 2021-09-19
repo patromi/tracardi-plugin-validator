@@ -1,2 +1,2 @@
-recursive-include tracardi_plugin_validator/plugin *
-recursive-include tracardi_plugin_validator/manual *
+recursive-include tracardi_string_validator/model *
+recursive-include tracardi_string_validator/service *
