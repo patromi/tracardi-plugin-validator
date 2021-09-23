@@ -9,7 +9,7 @@ The purpose of this plugin is valide data.
 
 # Configuration
 
-This node require configuration. \t.
+This node require configuration.
 *validate_type - Choose a validate type. We can choose from:
 - email
 - url
