@@ -18,7 +18,7 @@ This node require configuration.
 - time for example 12:34
 - int for example 5
 - float for example 5.3
-- number_phone for example 123456789
+- number_phone for example +48123456789
 
 *data - Here is data what we want to validate
 
