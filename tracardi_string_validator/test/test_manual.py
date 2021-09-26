@@ -10,4 +10,5 @@ init = {
 payload = {}
 
 result = run_plugin(ValidatorAction, init, payload)
+print(result)
 assert result.output.value is True

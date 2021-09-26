@@ -9,10 +9,10 @@ from tracardi_string_validator.service.validator import Validator
 class ValidatorAction(ActionRunner):
     def __init__(self, **kwargs):
         self.config = Configuration(**kwargs)
-        self.check = Validator(self.config)
+        self.validator = Validator(self.config)
 
     async def run(self, payload):
-        if self.check.check():
+        if self.validator.check():
             return Result(port='payload', value=True)
         else:
             return Result(port='payload', value=False)

@@ -1,4 +1,5 @@
 import re
+import barcodenumber
 
 from tracardi_string_validator.model.configuration import Configuration
 
@@ -6,6 +7,7 @@ from tracardi_string_validator.model.configuration import Configuration
 class Validator:
     def __init__(self, config: Configuration):
         self.config = config
+        self.regex = self._get_regex()
 
     def _get_regex(self):
         """Get a actual regex with dict from validation_type."""
@@ -27,12 +29,16 @@ class Validator:
             'int': r'^[0-9]+$',
             'float': r'^[+-]?([0-9]{1,})[.,]([0-9]{1,})$',
             'number_phone': r'\(?\+[0-9]{1,3}\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})? ?(\w{1,'
-                            r'10}\s?\d{1,6})?'}
+                            r'10}\s?\d{1,6})?',
+            'ean' : 'ean'
+        }
+
         return dict_regex[self.config.validation_name]
 
     def check(self) -> bool:
         """Check the validation"""
-        if re.match(self._get_regex(), self.config.data):
-            return True
-        else:
-            return False
+        if self.regex == 'ean':
+            return barcodenumber.check_code('ean13', self.config.data)
+        return re.match(self.regex,self.config.data)
+
+
