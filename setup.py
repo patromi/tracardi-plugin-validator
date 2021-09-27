@@ -14,7 +14,8 @@ setup(
     packages=['tracardi_string_validator'],
     install_requires=[
         "tracardi-plugin-sdk",
-        "pydantic"
+        "pydantic",
+        "barcodenumber"
         ],
     classifiers=[
         "Programming Language :: Python :: 3",

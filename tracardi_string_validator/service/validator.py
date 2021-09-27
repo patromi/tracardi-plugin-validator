@@ -7,11 +7,11 @@ from tracardi_string_validator.model.configuration import Configuration
 class Validator:
     def __init__(self, config: Configuration):
         self.config = config
-        self.regex = self._get_regex()
+        self.validation_rules = self._get_regex()
 
     def _get_regex(self):
         """Get a actual regex with dict from validation_type."""
-        dict_regex = {
+        return {
             'email': r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b',
             'url': r'((http|https)\:\/\/)?[a-zA-Z0-9\.\/\?\:@\-_:#]+\.([a-zA-Z]){2,'
                    r'6}([a-zA-Z0-9\.\&\/\?\:@\-_:#])*',
@@ -29,16 +29,16 @@ class Validator:
             'int': r'^[0-9]+$',
             'float': r'^[+-]?([0-9]{1,})[.,]([0-9]{1,})$',
             'number_phone': r'\(?\+[0-9]{1,3}\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})? ?(\w{1,'
-                            r'10}\s?\d{1,6})?',
-            'ean' : 'ean'
+                            r'10}\s?\d{1,6})?'
         }
-
-        return dict_regex[self.config.validation_name]
 
     def check(self) -> bool:
         """Check the validation"""
-        if self.regex == 'ean':
+        if self.validation_rules == 'ean':
             return barcodenumber.check_code('ean13', self.config.data)
-        return re.match(self.regex,self.config.data)
 
-
+        if self.config.validation_name in self.validation_rules:
+            regex = self.validation_rules[self.config.validation_name]
+            return re.match(regex, self.config.data) is not None
+        else:
+            raise ValueError("Please provide validation rule form the list {}".format(self.validation_rules.keys()))
