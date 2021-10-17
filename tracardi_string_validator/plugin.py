@@ -30,7 +30,7 @@ def register() -> Plugin:
                 'validation_name': None,
                 'data': None
             },
-            version='0.1.1',
+            version='0.1.2',
             license="MIT",
             author="Patryk Migaj"
 
