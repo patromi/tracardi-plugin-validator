@@ -2,7 +2,7 @@
 
 This code can be run within Tracardi workflow.
 
-# Sending mail with tracarti
+# Sending mail with Tracardi
 
 The purpose of this plugin is to validate data.
 
