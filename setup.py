@@ -15,6 +15,7 @@ setup(
     install_requires=[
         "tracardi-plugin-sdk>=0.6.21",
         "pydantic",
+        "tracardi_dot_notation",
         "barcodenumber"
         ],
     classifiers=[

@@ -1,5 +1,7 @@
 tracardi-plugin-sdk>=0.6.21
 pydantic
 barcodenumber
+tracardi_dot_notation
 
+tracardi
 pytest

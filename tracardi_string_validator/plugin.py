@@ -9,7 +9,6 @@ from tracardi_dot_notation.dot_accessor import DotAccessor
 
 class StringValidatorAction(ActionRunner):
     def __init__(self, **kwargs):
-
         self.config = Configuration(**kwargs)
         self.validator = Validator(self.config)
 

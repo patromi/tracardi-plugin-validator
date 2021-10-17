@@ -1,10 +1,8 @@
 from tracardi_plugin_sdk.service.plugin_runner import run_plugin
 
 from tracardi_string_validator.plugin import StringValidatorAction
-from tracardi_string_validator.service import validator as r
 import pytest
 import random
-from pydantic import BaseModel
 
 
 @pytest.mark.email
