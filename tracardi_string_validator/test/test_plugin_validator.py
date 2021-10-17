@@ -120,8 +120,12 @@ def test_ean():
 def test_number_phone():
     a = 0
     while not a == 1000:
-        d = random.randint(1, 99)
-        d = '+' + str(d)
+        d = random.randint(1, 999)
+        if d<10:
+            d = '+0' + str(d)
+        else:
+            d = '+' + str(d)
+
         c = random.randint(1000000, 999999999)
         a += 1
         init = {'validation_name': "number_phone",
@@ -130,6 +134,7 @@ def test_number_phone():
         if klass.output.value:
             assert True
         else:
+            print(init)
             assert False
 
 
