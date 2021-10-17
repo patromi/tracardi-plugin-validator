@@ -4,15 +4,20 @@ from tracardi_plugin_sdk.domain.result import Result
 
 from tracardi_string_validator.model.configuration import Configuration
 from tracardi_string_validator.service.validator import Validator
+from tracardi_dot_notation.dot_accessor import DotAccessor
 
 
 class StringValidatorAction(ActionRunner):
     def __init__(self, **kwargs):
+
         self.config = Configuration(**kwargs)
         self.validator = Validator(self.config)
 
     async def run(self, payload):
-        if self.validator.check():
+        dot = DotAccessor(self.profile, self.session, payload, self.event, self.flow)
+        string = dot[self.config.data]
+
+        if self.validator.check(string):
             return Result(port='payload', value=True)
         else:
             return Result(port='payload', value=False)
