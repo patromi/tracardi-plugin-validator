@@ -1,14 +1,15 @@
 from tracardi_plugin_sdk.service.plugin_runner import run_plugin
 
-from tracardi_string_validator.plugin import ValidatorAction
+from tracardi_string_validator.plugin import StringValidatorAction
 
-init = {
-    'validation_name': 'email',
-    'data': "my@email.com"
-}
 
-payload = {}
+def test_plugin():
+    init = {
+        'validation_name': 'email',
+        'data': "my@email.com"
+    }
 
-result = run_plugin(ValidatorAction, init, payload)
-print(result)
-assert result.output.value is True
+    payload = {}
+
+    result = run_plugin(StringValidatorAction, init, payload)
+    assert result.output.value is True

@@ -1,3 +1,5 @@
-tracardi-plugin-sdk
+tracardi-plugin-sdk>=0.6.21
 pydantic
 barcodenumber
+
+pytest

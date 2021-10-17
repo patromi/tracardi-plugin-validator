@@ -6,7 +6,7 @@ from tracardi_string_validator.model.configuration import Configuration
 from tracardi_string_validator.service.validator import Validator
 
 
-class ValidatorAction(ActionRunner):
+class StringValidatorAction(ActionRunner):
     def __init__(self, **kwargs):
         self.config = Configuration(**kwargs)
         self.validator = Validator(self.config)
@@ -23,25 +23,25 @@ def register() -> Plugin:
         start=False,
         spec=Spec(
             module='tracardi_string_validator.plugin',
-            className='ValidatorAction',
+            className='StringValidatorAction',
             inputs=["payload"],
             outputs=["payload"],
             init={
                 'validation_name': None,
                 'data': None
             },
-            version='0.1',
+            version='0.1.1',
             license="MIT",
             author="Patryk Migaj"
 
         ),
         metadata=MetaData(
-            name='Validator',
-            desc='Validation of data such as: email, url, ipv4, date, time,int,float, phone number, ean code',
+            name='String validator',
+            desc='Validates data such as: email, url, ipv4, date, time,int,float, phone number, ean code',
             type='flowNode',
             width=200,
             height=100,
-            icon='validation_name',
-            group=["Validations"]
+            icon='validator',
+            group=["Validators"]
         )
     )

@@ -34,7 +34,7 @@ class Validator:
 
     def check(self) -> bool:
         """Check the validation"""
-        if self.validation_rules == 'ean':
+        if self.config.validation_name == 'ean':
             return barcodenumber.check_code('ean13', self.config.data)
 
         if self.config.validation_name in self.validation_rules:
