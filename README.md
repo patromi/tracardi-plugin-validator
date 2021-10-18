@@ -24,12 +24,18 @@ This node require configuration.
 
 * data - Here is data what we want to validate
 
-# Example
+# Examples
 ```json
   {"validate_regex" : "url",
   "data" : "tracardi.com"
 ```
-It will return True
+It will return True on output
+```json
+  {"validate_regex" : "email",
+  "data" : "12341232"
+```
+It will return False on output
+
 # Input payload
 This node does not process input payload.
 
