@@ -1,8 +1,5 @@
-# Tracardi plugin
+# Tracardi plugin: String Validator
 
-This code can be run within Tracardi workflow.
-
-# Sending mail with tracarti
 
 The purpose of this plugin is valide data. We need to specify a type of regex. We can choose from:
 
@@ -27,12 +24,12 @@ This node require configuration.
 # Examples
 ```json
   {"validate_regex" : "url",
-  "data" : "tracardi.com"
+  "data" : "tracardi.com"}
 ```
 It will return True on output
 ```json
   {"validate_regex" : "email",
-  "data" : "12341232"
+  "data" : "12341232"}
 ```
 It will return False on output
 
