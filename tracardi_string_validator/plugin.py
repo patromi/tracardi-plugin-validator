@@ -15,11 +15,11 @@ class StringValidatorAction(ActionRunner):
     async def run(self, payload):
         dot = DotAccessor(self.profile, self.session, payload, self.event, self.flow)
         string = dot[self.config.data]
-        print(self.validator.check(string))
+
         if self.validator.check(string):
-            return Result(port='payload', value=True)
+            return Result(port='payload', value={"result": True})
         else:
-            return Result(port='payload', value=False)
+            return Result(port='payload', value={"result": False})
 
 
 def register() -> Plugin:
@@ -34,7 +34,7 @@ def register() -> Plugin:
                 'validation_name': None,
                 'data': None
             },
-            version='0.1.3',
+            version='0.1.4',
             license="MIT",
             author="Patryk Migaj"
 
