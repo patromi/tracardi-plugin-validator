@@ -1,5 +1,5 @@
-# Tracardi plugin
-# String Validator
+# Tracardi plugin: String Validator
+
 
 The purpose of this plugin is valide data. We need to specify a type of regex. We can choose from:
 
