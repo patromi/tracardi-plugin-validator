@@ -29,7 +29,7 @@ This node require configuration.
   {"validate_regex" : "url",
   "data" : "tracardi.com"
 ```
-
+It will return True
 # Input payload
 This node does not process input payload.
 
