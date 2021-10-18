@@ -6,7 +6,7 @@ from tracardi_string_validator.model.configuration import Configuration
 
 class Validator:
     def __init__(self, config: Configuration):
-        self.config = config.validation_name
+        self.config = config
         self.validation_rules = self._get_regex()
 
     def _get_regex(self):
@@ -33,13 +33,14 @@ class Validator:
 
         }
 
-    def check(self,string) -> bool:
+    def check(self, string) -> bool:
         """Check the validation"""
-        if self.validation_rules == 'ean':
-            return barcodenumber.check_code('ean13', string)
 
-        if self.config in self.validation_rules:
-            regex = self.validation_rules[self.config]
+        if self.config.validation_name == 'ean':
+            return barcodenumber.check_code('ean13', self.config.data)
+
+        if self.config.validation_name in self.validation_rules:
+            regex = self.validation_rules[self.config.validation_name]
             return re.match(regex, string) is not None
         else:
             raise ValueError("Please provide validation rule form the list {}".format(self.validation_rules.keys()))

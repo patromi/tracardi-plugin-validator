@@ -7,16 +7,15 @@ from tracardi_string_validator.service.validator import Validator
 from tracardi_dot_notation.dot_accessor import DotAccessor
 
 
-class ValidatorAction(ActionRunner):
+class StringValidatorAction(ActionRunner):
     def __init__(self, **kwargs):
-
         self.config = Configuration(**kwargs)
         self.validator = Validator(self.config)
 
     async def run(self, payload):
         dot = DotAccessor(self.profile, self.session, payload, self.event, self.flow)
         string = dot[self.config.data]
-
+        print(self.validator.check(string))
         if self.validator.check(string):
             return Result(port='payload', value=True)
         else:
@@ -28,25 +27,25 @@ def register() -> Plugin:
         start=False,
         spec=Spec(
             module='tracardi_string_validator.plugin',
-            className='ValidatorAction',
+            className='StringValidatorAction',
             inputs=["payload"],
             outputs=["payload"],
             init={
                 'validation_name': None,
                 'data': None
             },
-            version='0.1',
+            version='0.1.3',
             license="MIT",
             author="Patryk Migaj"
 
         ),
         metadata=MetaData(
-            name='Validator',
-            desc='Validation of data such as: email, url, ipv4, date, time,int,float, phone number, ean code',
+            name='String validator',
+            desc='Validates data such as: email, url, ipv4, date, time,int,float, phone number, ean code',
             type='flowNode',
             width=200,
             height=100,
-            icon='validation_name',
-            group=["Validations"]
+            icon='ok',
+            group=["Validators"]
         )
     )

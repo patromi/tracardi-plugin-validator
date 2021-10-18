@@ -1,10 +1,8 @@
 from tracardi_plugin_sdk.service.plugin_runner import run_plugin
 
-from tracardi_string_validator.plugin import ValidatorAction
-from tracardi_string_validator.service import validator as r
+from tracardi_string_validator.plugin import StringValidatorAction
 import pytest
 import random
-from pydantic import BaseModel
 
 
 @pytest.mark.email
@@ -22,7 +20,7 @@ def test_email():
         init = {'validation_name': "email",
                 'data': a}
         payload = {}
-        klass = run_plugin(ValidatorAction, init, payload)
+        klass = run_plugin(StringValidatorAction, init, payload)
         if klass.output.value:
             assert True
         else:
@@ -32,7 +30,7 @@ def test_email():
 def test_url():
     init = {'validation_name': "url",
             'data': f"https://www.polska.com/api/e/w/2"}
-    klass = run_plugin(ValidatorAction, init, {})
+    klass = run_plugin(StringValidatorAction, init, {})
     if klass.output.value:
         assert True
     else:
@@ -53,7 +51,7 @@ def test_date():
         a += 1
         init = {'validation_name': "date",
                 'data': f"{b}-{c}-{d}"}
-        klass = run_plugin(ValidatorAction, init, {})
+        klass = run_plugin(StringValidatorAction, init, {})
         if klass.output.value:
             assert True
         else:
@@ -67,7 +65,7 @@ def test_int():
         a += 1
         init = {'validation_name': "int",
                 'data': c}
-        klass = run_plugin(ValidatorAction, init, {})
+        klass = run_plugin(StringValidatorAction, init, {})
         if klass.output.value:
             assert True
         else:
@@ -81,7 +79,7 @@ def test_float():
         a += 1
         init = {'validation_name': "float",
                 'data': c}
-        klass = run_plugin(ValidatorAction, init, {})
+        klass = run_plugin(StringValidatorAction, init, {})
         if klass.output.value:
             assert True
         else:
@@ -99,7 +97,7 @@ def test_timer():
         a += 1
         init = {'validation_name': "time",
                 'data': f"{c}:{d}"}
-        klass = run_plugin(ValidatorAction, init, {})
+        klass = run_plugin(StringValidatorAction, init, {})
         if klass.output.value:
             assert True
         else:
@@ -110,14 +108,14 @@ def test_ean():
     a = "5901234123457"
     init = {'validation_name': "ean",
             'data': a}
-    klass = run_plugin(ValidatorAction, init, {})
+    klass = run_plugin(StringValidatorAction, init, {})
     if klass.output.value:
         assert True
     else:
         assert False
 
 
-def test_numberphone():
+def test_number_phone():
     a = 0
     while not a == 1000:
         d = random.randint(1, 999)
@@ -130,7 +128,7 @@ def test_numberphone():
         a += 1
         init = {'validation_name': "number_phone",
                 'data': f"{d}{c}"}
-        klass = run_plugin(ValidatorAction, init, {})
+        klass = run_plugin(StringValidatorAction, init, {})
         if klass.output.value:
             assert True
         else:
@@ -149,7 +147,7 @@ def test_ip():
         a += 1
         init = {'validation_name': "ipv4",
                 'data': f"{b}.{c}.{d}.{e}"}
-        klass = run_plugin(ValidatorAction, init, {})
+        klass = run_plugin(StringValidatorAction, init, {})
         if klass.output.value:
             assert True
         else:
