@@ -20,9 +20,9 @@ The purpose of this plugin is valide data. We need to specify a type of regex. W
 
 This node require configuration.
 
-validate_regex - Choose a validate regex. 
+* validate_regex - Choose a validate regex. 
 
-data - Here is data what we want to validate
+* data - Here is data what we want to validate
 
 # Example
 ```json
