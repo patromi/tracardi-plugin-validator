@@ -34,6 +34,7 @@ def register() -> Plugin:
                 'validation_name': None,
                 'data': None
             },
+            manual="string_validator_action",
             version='0.1.4',
             license="MIT",
             author="Patryk Migaj"
