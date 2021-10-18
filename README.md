@@ -1,7 +1,4 @@
 # Tracardi plugin
-
-This code can be run within Tracardi workflow.
-
 # String Validator
 
 The purpose of this plugin is valide data. We need to specify a type of regex. We can choose from:
