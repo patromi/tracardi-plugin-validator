@@ -78,7 +78,7 @@ def register() -> Plugin:
             manual="string_validator_action",
             version='0.6.0',
             license="MIT",
-            author="Patryk Migaj"
+            author="Patryk Migaj, Risto Kowaczewski"
 
         ),
         metadata=MetaData(

@@ -5,3 +5,4 @@ tracardi_dot_notation
 
 tracardi
 pytest
+twine
