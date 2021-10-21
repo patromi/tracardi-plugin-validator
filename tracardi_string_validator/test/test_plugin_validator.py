@@ -20,21 +20,17 @@ def test_email():
         init = {'validation_name': "email",
                 'data': a}
         payload = {}
-        klass = run_plugin(StringValidatorAction, init, payload)
-        if klass.output.value:
-            assert True
-        else:
-            assert False
+        plugin = run_plugin(StringValidatorAction, init, payload)
+        valid, invalid = plugin.output
+        assert invalid.value is None
 
 
 def test_url():
     init = {'validation_name': "url",
             'data': f"https://www.polska.com/api/e/w/2"}
-    klass = run_plugin(StringValidatorAction, init, {})
-    if klass.output.value:
-        assert True
-    else:
-        assert False
+    plugin = run_plugin(StringValidatorAction, init, {})
+    valid, invalid = plugin.output
+    assert invalid.value is None
 
 
 
@@ -51,11 +47,9 @@ def test_date():
         a += 1
         init = {'validation_name': "date",
                 'data': f"{b}-{c}-{d}"}
-        klass = run_plugin(StringValidatorAction, init, {})
-        if klass.output.value:
-            assert True
-        else:
-            assert False
+        plugin = run_plugin(StringValidatorAction, init, {})
+        valid, invalid = plugin.output
+        assert invalid.value is None
 
 
 def test_int():
@@ -65,11 +59,9 @@ def test_int():
         a += 1
         init = {'validation_name': "int",
                 'data': c}
-        klass = run_plugin(StringValidatorAction, init, {})
-        if klass.output.value:
-            assert True
-        else:
-            assert False
+        plugin = run_plugin(StringValidatorAction, init, {})
+        valid, invalid = plugin.output
+        assert invalid.value is None
 
 
 def test_float():
@@ -79,11 +71,9 @@ def test_float():
         a += 1
         init = {'validation_name': "float",
                 'data': c}
-        klass = run_plugin(StringValidatorAction, init, {})
-        if klass.output.value:
-            assert True
-        else:
-            assert False
+        plugin = run_plugin(StringValidatorAction, init, {})
+        valid, invalid = plugin.output
+        assert invalid.value is None
 
 
 def test_timer():
@@ -97,22 +87,18 @@ def test_timer():
         a += 1
         init = {'validation_name': "time",
                 'data': f"{c}:{d}"}
-        klass = run_plugin(StringValidatorAction, init, {})
-        if klass.output.value:
-            assert True
-        else:
-            assert False
+        plugin = run_plugin(StringValidatorAction, init, {})
+        valid, invalid = plugin.output
+        assert invalid.value is None
 
 
 def test_ean():
     a = "5901234123457"
     init = {'validation_name': "ean",
             'data': a}
-    klass = run_plugin(StringValidatorAction, init, {})
-    if klass.output.value:
-        assert True
-    else:
-        assert False
+    plugin = run_plugin(StringValidatorAction, init, {})
+    valid, invalid = plugin.output
+    assert invalid.value is None
 
 
 def test_number_phone():
@@ -128,12 +114,10 @@ def test_number_phone():
         a += 1
         init = {'validation_name': "number_phone",
                 'data': f"{d}{c}"}
-        klass = run_plugin(StringValidatorAction, init, {})
-        if klass.output.value:
-            assert True
-        else:
-            print(init)
-            assert False
+        plugin = run_plugin(StringValidatorAction, init, {})
+
+        valid, invalid = plugin.output
+        assert invalid.value is None
 
 
 @pytest.mark.ip
@@ -147,9 +131,6 @@ def test_ip():
         a += 1
         init = {'validation_name': "ipv4",
                 'data': f"{b}.{c}.{d}.{e}"}
-        klass = run_plugin(StringValidatorAction, init, {})
-        if klass.output.value:
-            assert True
-        else:
-            assert False
-
+        plugin = run_plugin(StringValidatorAction, init, {})
+        valid, invalid = plugin.output
+        assert invalid.value is None

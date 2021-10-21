@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='tracardi-string-validator',
-    version='0.1.4',
+    version='0.6.0',
     description='The purpose of this plugin is validate data.',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -13,7 +13,7 @@ setup(
     author_email='patromi123@gmail.com',
     packages=['tracardi_string_validator'],
     install_requires=[
-        "tracardi-plugin-sdk>=0.6.21",
+        "tracardi-plugin-sdk>=0.6.22",
         "pydantic",
         "tracardi_dot_notation",
         "barcodenumber"

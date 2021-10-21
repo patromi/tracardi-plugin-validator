@@ -8,19 +8,20 @@ from tracardi_plugin_sdk.service.plugin_runner import run_plugin
 from tracardi_string_validator.plugin import StringValidatorAction
 
 
-def test_plugin():
+def test_string_validator_plugin():
+    payload = {"data": "my@email.com"}
     init = {
         'validation_name': 'email',
-        'data': "my@email.com"
+        'data': "payload@data"
     }
 
-    payload = {}
+    plugin = run_plugin(StringValidatorAction, init, payload)
 
-    result = run_plugin(StringValidatorAction, init, payload)
-    assert result.output.value is True
+    valid, invalid = plugin.output
+    assert invalid.value is None
 
-def test_dot():
 
+def test_string_validator_plugin_fails():
     init = {"data": "event@id",
             "validation_name": "time"}
     payload = {}
@@ -31,10 +32,7 @@ def test_dot():
                   session=Session(id="session-id"),
                   source=Entity(id="source-id"),
                   context=Context())
-    result = run_plugin(StringValidatorAction, init, payload,
+    plugin = run_plugin(StringValidatorAction, init, payload,
                         profile, None, event)
-    assert not result.output.value
-
-    print("OUTPUT:", result.output)
-    print("PROFILE:", result.profile)
-
+    valid, invalid = plugin.output
+    assert valid.value is None
