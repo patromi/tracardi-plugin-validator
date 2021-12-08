@@ -12,6 +12,7 @@ We can choose from:
 * int for example 3
 * float for example 3.4
 * number_phone for example +48123456789
+* localhost - for example http://localhost:9001
 
 # Configuration
 
