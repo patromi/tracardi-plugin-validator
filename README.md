@@ -6,12 +6,12 @@ We can choose from:
 
 * email - for example example@mail.com
 * url - for example tracardi.com
-* ipv4 for example 192.168.1.1
-* date for example 01.01.1900
-* time for example 01:01
-* int for example 3
-* float for example 3.4
-* number_phone for example +48123456789
+* ipv4 - for example 192.168.1.1
+* date - for example 01.01.1900
+* time - for example 01:01
+* int - for example 3
+* float - for example 3.4
+* number_phone - for example +48123456789
 * localhost - for example http://localhost:9001
 
 # Configuration
